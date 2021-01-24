@@ -16,6 +16,7 @@ from datetime import timedelta
 import shlex
 import argparse
 from configparser import ConfigParser, ExtendedInterpolation
+import coloredlogs
 import logging
 import glob
 import subprocess
@@ -35,8 +36,11 @@ if sys.version_info[0] < 3:
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 # Configure logging system
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-logging.basicConfig(level=logging.INFO, stream=sys.stdout,
-                    format='%(levelname)s (%(threadName)15s) - %(message)s')
+# logging.basicConfig(level=logging.INFO, stream=sys.stdout,
+#                     format='%(levelname)s (%(threadName)15s) - %(message)s')
+coloredlogs.install(level='INFO',
+                    stream=sys.stdout,
+                    fmt='%(levelname)5s (%(threadName)15s) - %(message)s')
 logger = logging.getLogger('OpenFPGA_Task_logs')
 
 
